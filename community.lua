@@ -11,23 +11,24 @@ return {
 		"mfussenegger/nvim-jdtls",
 		opts = {
 			settings = {
-				java = {
-					configuration = {
-						runtimes = {
-							{
-								name = "JavaSE-11",
-								path = "C:\\Users\\U482024\\.sdkman\\candidates\\java\\11.0.22-tem\\",
-							},
-						},
-					},
-					maven = {
-						userSettings = "C:\\Users\\U482024\\.m2\\settings.xml",
-						globalSettings = "C:\\Users\\U482024\\.m2\\settings.xml",
-					},
-				},
+				-- java = {
+				-- 	configuration = {
+				-- 		runtimes = {
+				-- 			{
+				-- 				name = "JavaSE-11",
+				-- 				path = "C:\\Users\\U482024\\.sdkman\\candidates\\java\\11.0.22-tem\\",
+				-- 			},
+				-- 		},
+				-- 	},
+				-- 	maven = {
+				-- 		userSettings = "C:\\Users\\U482024\\.m2\\settings.xml",
+				-- 		globalSettings = "C:\\Users\\U482024\\.m2\\settings.xml",
+				-- 	},
+				-- },
 			},
 		},
 	},
+	{ import = "astrocommunity.pack.go" },
 	{ import = "astrocommunity.scrolling.neoscroll-nvim" },
 	-- { import = "astrocommunity.color.transparent-nvim" },
 }
