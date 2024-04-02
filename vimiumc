@@ -1,0 +1,6 @@
+map <a-t> createTab
+map <a-c> removeTab
+map <a-h> previousTab
+map <a-l> nextTab
+map <a-left> goBack
+map <a-right> goForward
