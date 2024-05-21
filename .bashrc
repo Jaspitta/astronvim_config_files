@@ -94,9 +94,27 @@ export PATH="${PATH}:~/scoop/apps/mongosh/current/bin/mongosh.exe:~/scoop/apps/m
 export PATH="${PATH}:~/.sdkman/candidates/java/current/bin"
 PATH=$(echo "$PATH" | sed -e 's/\:\/c\/Program\ Files\/Zulu\/zulu-8-jre\/bin//')
 
+# eventually I will have problems on this one but I will fix them later
 export PATH="${PATH}:/c/Users/U482024/go/pkg/mod/github.com/open-pomodoro/openpomodoro-cli@v0.3.0/"
+
 pmd(){
   openpomodoro-cli "$@"
+}
+
+pmd_const(){
+  if [[ $1 == "help" ]]
+  then
+    echo "first argument should be the duration and second sould be the tag"
+  else
+    pmd start "^^^^^^^^^^^^" --duration $1 -t $2
+    echo "------------"
+    while :
+    do
+      sleep 60
+      pmd status
+      echo "------------"
+    done
+  fi
 }
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
