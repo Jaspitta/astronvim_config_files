@@ -106,16 +106,37 @@ pmd_const(){
   then
     echo "first argument should be the duration and second sould be the tag"
   else
-    pmd start "^^^^^^^^^^^^" --duration $1 -t $2
-    echo "------------"
+    local tag_string=$2
+    # getting size of the tags string and the separators ,
+    local tag_size=${#tag_string}
+    local separators="${tag_string//[^,]}"
+
+    # calculating the total size with the tag size plus the separators
+    tag_size=$((tag_size + ${#separators} - 2))
+
+    # preparing footer and header by repeating the character enough to fill the tag string
+    local header='↓'
+    local footer='↑'
+    for number in  $(seq 0 1 $tag_size)
+    do
+      header+='↓'
+      footer+='↑'
+    done
+
+    # starting timer
+    pmd start "$header" --duration $1 -t $tag_string
+    echo $footer
+    echo
     while :
     do
       sleep 60
       pmd status
-      echo "------------"
+      echo $footer
+      echo
     done
   fi
 }
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
