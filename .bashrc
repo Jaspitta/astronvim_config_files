@@ -141,3 +141,10 @@ pmd_const(){
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# Ugly function because sdk fucks up my path but it does the job
+
+function switchJ21 () {
+    sdk use java 21.0.2-tem
+    export PATH=$(echo $PATH | sed -e 's/tem\/c/tem:\/c/')
+    PATH=$(echo $PATH | sed -e 's/java\/current/java\/21.0.2-tem/')
+}
